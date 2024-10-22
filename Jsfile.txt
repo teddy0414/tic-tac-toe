@@ -1,0 +1,107 @@
+let cont1 = document.querySelectorAll(".container1");
+let boxes = document.querySelectorAll(".boxes");
+let rstBtn = document.querySelector("#reset");
+let msg = document.querySelector(".text");
+let playerChance =  document.querySelector(".chance");
+let stgame = document.querySelector("#newgame");
+let winr = false;
+
+let turnO = true;
+
+const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
+
+boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        if (!winr && box.innerText === "") {
+            if (turnO) {
+                playerChance.innerText = "Player O Chance";
+                box.innerText = "X";
+                turnO = false;
+            } else {
+                playerChance.innerText = "Player X Chance";
+                box.innerText = "O";
+                turnO = true;
+            }
+            box.disabled = true;
+            checkWinner();
+        }
+    });
+});
+
+const checkWinner = () => {
+    for (let pattern of winningCombinations) {
+        let posVal1 = boxes[pattern[0]].innerText;
+        let posVal2 = boxes[pattern[1]].innerText;
+        let posVal3 = boxes[pattern[2]].innerText;
+
+        if (posVal1 !== "" && posVal2 !== "" && posVal3 !== "") {
+            if (posVal1 === posVal2 && posVal2 === posVal3) {
+                winr = true;
+                disableBox();
+                textMsg(posVal1);
+                return;
+            }
+        }
+    }
+    if (isDraw()) {
+        disableBox();
+        tie();
+    }
+};
+
+const isDraw = () => {
+    for (let box of boxes) {
+        if (box.innerText === "") {
+            return false;
+        }
+    }
+    return true;
+};
+
+const disableBox = () => {
+    for (let box of boxes) {
+       box.disabled = true;
+    }
+};
+
+const tie = () => {
+    msg.innerText = "Match Tie! No Winner";
+};
+
+const textMsg = (posVal1) => {
+    msg.innerText = `Congratulations Player ${posVal1} Winner`;
+};
+
+const resetGame = () => {
+    turnO = true;
+    winr = false;
+    enableBox();
+    msg.innerText = "";
+};
+
+const enableBox = () => {
+    for (let box of boxes) {
+       box.disabled = false;
+       box.innerText = "";
+    }
+};
+
+rstBtn.addEventListener("click", resetGame);
+
+const newGame = () => {
+    turnO = true;
+    winr = false;
+    enableBox();
+    msg.innerText = "";
+};
+
+stgame.addEventListener("click", newGame);

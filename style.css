@@ -1,0 +1,72 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+h1{
+    color: aliceblue;    
+}
+.chance{
+    font-size: 5vh;
+    margin: 0;
+}
+.text{
+    color: rgb(5, 214, 5);
+    font-size: 8vh;
+}
+#newgame{
+    height: 6vh;
+    width: 10vw;
+    font-size: 3vh;
+    margin: 5vh;
+}
+
+.main-container{
+    height: 115vh;
+    width: 100vw;
+    text-align: center;
+    /* background-image: linear-gradient(to bottom, #072633, #092a38, #0b2e3e, #0d3243, #0f3649); */
+    /* background: rgb(7,38,51);
+    background: linear-gradient(180deg, rgba(7,38,51,1) 51%, rgba(15,54,73,1) 56%); */
+    background: rgb(15,54,73);
+    background: linear-gradient(180deg, rgba(15,54,73,1) 18%, rgba(15,54,73,1) 25%, rgba(7,38,51,1) 49%, rgba(7,38,51,1) 58%, rgba(15,54,73,1) 64%, rgba(7,38,51,1) 86%);
+}
+    .container1{
+            height: 80vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;      
+    }
+        .board{
+                height: 70vh;
+                width: 40vw;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 1.5vw;
+                margin: 0;
+        }
+            .boxes{
+                    height: 18vh; 
+                    width: 9.5vw;
+                    font-size: 10vh;
+                    color: gold;
+                    box-shadow: 10px 10px 5px black;
+                    border-radius: 2vh;
+                    animation: zoomIn; 
+                    animation-duration: 1s;
+                    /* animation-delay: 1s; */
+                    background: rgba(255, 255, 255, 0.12);
+                    border-radius: 16px;
+                    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                    backdrop-filter: blur(2.7px);
+                    -webkit-backdrop-filter: blur(2.7px);
+                    border: 1px solid rgba(255, 255, 255, 1);
+            }
+
+            #reset{
+                height: 6vh;
+                width: 10vw;
+                font-size: 3vh;
+            }
